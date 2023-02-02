@@ -314,24 +314,25 @@ st.caption('Table 7. Studies on the distillation methods for DAMO-YOLO on MSCOCO
 st.write('''We conclude that CWD is more fit for our models, while MGD is worse than Mimicking as complex
 hyperparameters make it not general enough.Our proposed distillation strategy is split into two stages:
 
-1) Our teacher distills the student at the first stage (284 epochs) on strong mosaic domain. Facing the challenging
-augmented data distribution, the student can further extract information smoothly under the teacher’s guidance.
+1) Our teacher distills the student at the first stage (284 epochs) on strong mosaic domain. Facing the challenging 
+    augmented data distribution, the student can further extract information smoothly under the teacher’s guidance.
 
 2) The student finetunes itself on no mosaic domain at the second stage (16 epochs). The reason why we do not adopt
-distillation at this stage is that, in such a short period, the teacher’s experience will damage the student’s performance
-when he wants to pull the student in a strange domain (i.e.,no mosaic domain). A long-term distillation would weaken
-the damage but is expensive. So we choose a trade-off to make the student independent.
+    distillation at this stage is that, in such a short period, the teacher’s experience will damage the student’s performance
+    when he wants to pull the student in a strange domain (i.e.,no mosaic domain). A long-term distillation would weaken
+    the damage but is expensive. So we choose a trade-off to make the student independent.
 
 In DAMO-YOLO, the distillation is equipped with two advanced enhancements:
 
 1) Align Module. On the one hand, it is a linear projection layer to adapt student feature’s to the same resolution
-(C, H, W) as teacher’s. On the other hand, forcing the student to approximate teacher feature directly leads to
-minor gains compared to the adaptive imitation [36]. 
+    (C, H, W) as teacher’s. On the other hand, forcing the student to approximate teacher feature directly leads to
+    minor gains compared to the adaptive imitation [36]. 
 
 2) Channel-wise Dynamic Temperature. Inspired by PKD [2], we add a normalization to teacher and student features, to
-weaken the effect the difference of real values brings. After subtracting the mean, standard deviation of each channel
-would function as temperature coefficient in KL loss. Besides, we present two key observations for a better
-usage of distillation. One is the balance between distillation
+    weaken the effect the difference of real values brings. After subtracting the mean, standard deviation of each channel
+    would function as temperature coefficient in KL loss. 
+    
+Besides, we present two key observations for a better usage of distillation. One is the balance between distillation
 and task loss.
 ''')
 st.image('image/rs-3.png')
