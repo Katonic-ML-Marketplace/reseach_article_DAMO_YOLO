@@ -390,21 +390,4 @@ st.header('References')
 with st.expander("Expand"):
     references = read_markdown_file("pages/reference.md")
     st.write(references, unsafe_allow_html=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
